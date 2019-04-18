@@ -1,0 +1,30 @@
+package com.wzb.xeventjs;
+
+import android.webkit.JavascriptInterface;
+
+import com.google.gson.Gson;
+import com.wzb.xevent.XPEvent;
+import com.wzb.xevent.util.LogcatUtil;
+
+/**
+ * Js 工具类
+ * Created by samwangzhibo on 2019/1/30.
+ */
+
+public class JsTool extends Object implements IJsBridgeImpl{
+    private static final String TAG = "JsTool";
+    private Gson gson;
+    public JsTool(Gson gson) {
+        this.gson = gson;
+    }
+
+    // 定义JS需要调用的方法
+    // 被JS调用的方法必须加入@JavascriptInterface注解
+    @JavascriptInterface
+    public void triggerReport(String eventName, String jsonData) {
+//        LogcatUtil.e(TAG, jsonData + "");
+        XPEvent xpEvent = new Gson().fromJson(jsonData, XPEvent.class);
+//        XPanelOmegaUtils.trackEvent(eventName, xpEvent.attrsMap, true, true);
+        LogcatUtil.e(TAG, "Event=" + eventName + "         ," + (xpEvent.attrsMap == null ? "" : xpEvent.attrsMap.toString()));
+    }
+}

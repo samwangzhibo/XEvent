@@ -1,0 +1,16 @@
+{
+  "name": "xevent",
+  "version": "1.0.0",
+  "description": "xevent js lib",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}

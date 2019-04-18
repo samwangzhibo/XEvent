@@ -1,0 +1,1 @@
+require('./XPEventManager.js');

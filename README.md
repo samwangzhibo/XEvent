@@ -1,6 +1,6 @@
 XEvent
 ---
-XEvent是一个基于事件流的跨平台 配置化打点框架。
+XEvent is a cross-platform, structured management framework based on event flow. 
 
 分为2种实现 
 

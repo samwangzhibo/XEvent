@@ -12,7 +12,7 @@ function sendEvent(event) {
     }else{
         objs= JSON.parse(event);
     }
-    console.log(objs);
+//    console.log(objs);
     var innerEvent = new Event(objs.dimension, objs.xpEventId, objs.time, objs.attrsMap, objs.eventAttrsMap);
     stream.receiveEvent(innerEvent)
 }

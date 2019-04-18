@@ -23,7 +23,7 @@ class EventStream {
         for (let tracker of currentTrackers) {
             let reSendEvent = tracker.receiveEvent(event);
             if(reSendEvent){
-                console.log("buffer event : " + reSendEvent.getId());
+//                console.log("buffer event : " + reSendEvent.getId());
                 bufferEvents.push(reSendEvent);
             }
         }

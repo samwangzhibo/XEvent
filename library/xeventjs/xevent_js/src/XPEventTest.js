@@ -13,7 +13,6 @@ function test(eventID, eventAttrsMap) {
     eventManager.newStream.receiveEvent(newEvent);
 }
 
-
 module.exports = {
     testStr: testStr,
     test: test

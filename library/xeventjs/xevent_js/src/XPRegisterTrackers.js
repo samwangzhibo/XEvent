@@ -2,7 +2,8 @@ var EventTracker = require('./XPTracker.js');
 var stream = require('./XPStream');
 var StashEventTracker = require('./XPStashTracker');
 
-var isTest = 1;
+//var isTest = 1; ///测试时候打开，运行test.js文件
+var isTest = 0;
 
 //根据 dimension 注册一组 tracker
 function registerTrackers(stream, dimension){
@@ -42,25 +43,43 @@ function registerTrackers(stream, dimension){
     var xpanel_sw_time_tracker = new StashEventTracker("keep_time");
     xpanel_sw_time_tracker.addDescriptor((event, fulfill, breaker)=>{
         if (event.getId() == "onresume") {
+//          console.log("addDescriptor onresume");
             fulfill(event);
             xpanel_sw_time_tracker.putStashEvent("A", event);
         }
     }).addDescriptor((event, fulfill, breaker)=>{
         if (event.getId() == "onpause") {
             let duration = event.getTime() - xpanel_sw_time_tracker.getStashEvent("A").getTime();
-            event.putAttr("toast_str", "页面停留时长， 耗时:" + duration/1000 + "秒");
+            let toastStr = "页面停留时长， 耗时:" + duration/1000 + "秒";
+//            console.log("addDescriptor onpause toastStr : " + toastStr + " event.attrsMap : " + event.attrsMap);
+            event.putAttr("toast_str", toastStr);
             fulfill(event);
         }
     }).addCompletion((event)=>{
         var jsonData = JSON.stringify(event);
-        triggerReport("xpanel_sw_time", jsonData);
+//        console.log("triggerReport jsonData: " + jsonData);
+        triggerReport("sw_time", jsonData);
     }).addResendEventCb((event, timestamp)=>{
           event.setTime(timestamp);
           event.setId("toast");
+//          console.log("addDescriptor event: " + event.getId());
           return event;
       }
     );
     trackers.push(xpanel_sw_time_tracker);
+      
+    //toast tracker
+    var toast_tracker = new StashEventTracker("toast");
+        toast_tracker.addDescriptor((event, fulfill, breaker)=>{
+            if (event.getId() == "toast") {
+                fulfill(event);
+            }
+        }).addCompletion((event)=>{
+//            console.log("addCompletion : " + event.getAttr("toast_str"));
+            toast(event.getAttr("toast_str"));
+        });
+    trackers.push(toast_tracker);
+        
 
     var xpanel_half_reveal_sw_tracker = new EventTracker("xpanel_half_reveal_sw");
     xpanel_half_reveal_sw_tracker.addDescriptor((event, fulfill, breaker)=>{
@@ -207,4 +226,12 @@ function triggerReport(log, jsonData) {
     } else {
         xpEventManager.triggerReport(log, jsonData);
     }
+}
+
+function toast(str) {
+  if (isTest == 1) {
+    console.log(str);
+  } else {
+    xpEventManager.toast(str);
+  }
 }

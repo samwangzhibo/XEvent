@@ -7,4 +7,5 @@ package com.wzb.xeventjs;
 
 public interface IJsBridgeImpl {
     void triggerReport(String eventName, String jsonData);
+    void toast(String str);
 }

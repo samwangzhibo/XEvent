@@ -54,7 +54,7 @@ public class XEventJsTool implements IXEventJsToolImpl{
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webView.setWebChromeClient(new WebChromeClient());
 
-        webView.addJavascriptInterface(new JsTool(null), "xpEventManager");//AndroidtoJS类对象映射到js的test对象
+        webView.addJavascriptInterface(new JsTool(null, mContext), "xpEventManager");//AndroidtoJS类对象映射到js的test对象
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webView.evaluateJavascript(Utils.getStringFromAsset("libxevent.js", mContext), null);
 
@@ -77,8 +77,10 @@ public class XEventJsTool implements IXEventJsToolImpl{
     public void realSendEvent(XPEvent xpEvent) {
         XPEvent jsEvent = jsXEventAdapter.getEvent(xpEvent);
         String eventJsonStr = jsXEventAdapter.getEventStr(jsEvent);
+
+        LogcatUtil.e(TAG, "xpTest.testStr('" + eventJsonStr + "')");
+
         //大概10-100ms
-//        LogcatUtil.e(TAG, eventJsonStr);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webView.evaluateJavascript("javascript:sendEvent(" + eventJsonStr + ")", new ValueCallback<String>() {
                 @Override

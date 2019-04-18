@@ -6,6 +6,12 @@ package com.wzb.xevent.constant;
  */
 
 public class EventConstant {
+
+    /**
+     * XEvent system init event
+     * it is the first event send to stream
+     */
+    public static final String XP_EVENT_XEVENT_FRAMEWORK = "XEventSystem_VC_init";
     /**
      *  初始化容器
      * attrs

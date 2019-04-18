@@ -1,6 +1,8 @@
 package com.wzb.xeventjs;
 
+import android.content.Context;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.wzb.xevent.XPEvent;
@@ -14,8 +16,10 @@ import com.wzb.xevent.util.LogcatUtil;
 public class JsTool extends Object implements IJsBridgeImpl{
     private static final String TAG = "JsTool";
     private Gson gson;
-    public JsTool(Gson gson) {
+    private Context mContext;
+    public JsTool(Gson gson, Context mContext) {
         this.gson = gson;
+        this.mContext = mContext;
     }
 
     // 定义JS需要调用的方法
@@ -26,5 +30,11 @@ public class JsTool extends Object implements IJsBridgeImpl{
         XPEvent xpEvent = new Gson().fromJson(jsonData, XPEvent.class);
 //        XPanelOmegaUtils.trackEvent(eventName, xpEvent.attrsMap, true, true);
         LogcatUtil.e(TAG, "Event=" + eventName + "         ," + (xpEvent.attrsMap == null ? "" : xpEvent.attrsMap.toString()));
+    }
+
+    @JavascriptInterface
+    @Override
+    public void toast(String str) {
+        Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
     }
 }

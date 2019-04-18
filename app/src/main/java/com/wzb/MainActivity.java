@@ -38,6 +38,9 @@ public class MainActivity extends Activity {
         LogcatUtil.sLogEnable = false;
 
         XEventJsTool.init(MainActivity.this);
+        // 发送初始化事件，告知js解析tracker并生成
+        XEventWrapper.sendEvent(new XPEvent(EventConstant.XP_EVENT_XEVENT_FRAMEWORK));
+
 
     }
 

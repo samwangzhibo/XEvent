@@ -26,4 +26,9 @@ public class Utils {
         }
         return sb.toString();
     }
+
+    public static int dip2px(Context context, int dp) {
+        final float scale = context.getResources ().getDisplayMetrics ().density;
+        return (int) (dp * scale + 0.5f);
+    }
 }

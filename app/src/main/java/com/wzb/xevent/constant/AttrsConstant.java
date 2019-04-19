@@ -96,4 +96,12 @@ public class AttrsConstant {
      * 动态创建卡片的Tracker事件 分组
      */
     public static final String GROUP = "group";
+    /**
+     * 位置
+     */
+    public static final String POSITION = "position";
+    /**
+     * 子卡片位置
+     */
+    public static final String SUBCARD_POSITION = "subcard_position";
 }

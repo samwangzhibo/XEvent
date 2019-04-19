@@ -133,10 +133,14 @@ public class XEvent implements IXEvent {
     }
 
     public void sendEvent(XPEvent xEvent) {
+        ensureDefaultEventStream();
+        sendEvent(defaultEventStream, xEvent);
+    }
+
+    private void ensureDefaultEventStream(){
         if (defaultEventStream == null){
             defaultEventStream = new XPEventStream();
         }
-        sendEvent(defaultEventStream, xEvent);
     }
 
     public void sendEvent(XPEventStream xpEventStream, XPEvent xEvent) {
@@ -148,6 +152,11 @@ public class XEvent implements IXEvent {
         } else if (!isRelease){
             mXEventHandler.sendMessage(Message.obtain(mXEventHandler, FLAG_SEND_EVENT, new HandlerEntry(xpEventStream, xEvent)));
         }
+    }
+
+    public void sendEventDelay(XPEvent xEvent, long duration){
+        ensureDefaultEventStream();
+        sendEventDelay(defaultEventStream, xEvent, duration);
     }
 
     public void sendEventDelay(final XPEventStream xpEventStream, final XPEvent xEvent, long duration){

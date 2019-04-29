@@ -3,6 +3,8 @@ XEvent
 XEvent 是一个基于事件流的跨平台 配置化打点框架。
 XEvent is a cross-platform, structured management framework based on event flow.
 
+English doc click [here](./README-EN.md)!
+
 ![image-20190430010746467](https://ws3.sinaimg.cn/large/006tNc79ly1g2k1sbw06ij31ff0u0wji.jpg)
 
 
@@ -40,21 +42,21 @@ XEvent...
 1. 初始化 (样例代码 app/MainActivity)
 
    ```java
-   	// 1.初始化引擎
-      XEvent.getInstance().init();
+   // 1.初始化引擎
+   XEvent.getInstance().init();
    
-     // 2.设置事件流去分发事件
-      XEvent.getInstance().setDefaultEventStream(new CustomXPEventStream(MainActivity.this));
+   // 2.设置事件流去分发事件
+   XEvent.getInstance().setDefaultEventStream(new CustomXPEventStream(MainActivity.this));
    
-     // 3.设置处理框架抛回数据的回调
-     XEvent.getInstance().setIStreamLogCallback(new IStreamLogCallback() {
-       @Override
-       public void onEventLog(String eventName, Map<String, Object> attrs) {
-         if (TextUtils.isEmpty(eventName)) return;
-         //回调
-         LogcatUtil.e(TAG, "log : eventName = " + eventName);
-       }
-     });
+   // 3.设置处理框架抛回数据的回调
+   XEvent.getInstance().setIStreamLogCallback(new IStreamLogCallback() {
+     @Override
+     public void onEventLog(String eventName, Map<String, Object> attrs) {
+       if (TextUtils.isEmpty(eventName)) return;
+       //回调
+       LogcatUtil.e(TAG, "log : eventName = " + eventName);
+     }
+   });
    ```
 
 2. 配置打点规则DSL  (样例代码 app/assets)
@@ -103,7 +105,7 @@ XEvent...
 
 > 可以看到在 onPause时候上报了此次用户停留时长
 
-<img src="https://ws1.sinaimg.cn/large/006tNc79ly1g2k1sa2zs5j30h40ucgtz.jpg" width="50%" height="50%" />
+<img src="./shoot/xevent打点效果.gif" width="50%" height="50%" />
 
 
 
@@ -117,10 +119,10 @@ XEvent...
    XEventJsTool.init(MainActivity.this);
    ```
 
-   > `XEventJsTool` 是实现的简单版本Js运行时，它依赖于WebView的JSCore环境
-   >
-   > 主要涉及以下操作：
-   >
+   `XEventJsTool` 是实现的简单版本Js运行时，它依赖于WebView的JSCore环境
+
+   主要涉及以下操作：
+
    > 1. JSCore加载运行时js代码文件
    >
    >    ```java
@@ -160,12 +162,12 @@ XEvent...
 
    - **为什么？**
 
-   - - **省钱省机器，**减缓服务端对于用户行为实时建模的算力压力
-     - **省时间，**服务器不需要等到晚上跑前一天的全量原始数据fit。
+   - - **省钱省机器**，减缓服务端对于用户行为实时建模的算力压力
+     - **省时间**，服务器不需要等到晚上跑前一天的全量原始数据fit。
 
    - **原理**
 
-   - - **DSL****与规则实时下发**
+   - - **DSL 与规则实时下发**
 
    <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2k29fii6dj30tg0io3zs.jpg" width="80%" height="80%" />
 

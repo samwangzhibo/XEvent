@@ -25,7 +25,7 @@ public class XEventJsTool implements IXEventJsToolImpl{
      * 适配器
      */
     private JsXEventAdapter jsXEventAdapter = new JsXEventAdapter();
-    private static XEventJsTool instance;
+    private static volatile XEventJsTool instance;
 
     private XEventJsTool(Context mContext) {
         webView = new WebView(mContext);

@@ -24,7 +24,7 @@ import com.wzb.xevent.tracker.SimpleXPTracker;
 
 public class CustomXPEventStream extends SimpleEventStream {
     public static final String XPTAG = "DomesticXPEventStream";
-    public static final String EVENT_CONFIG_NAME = "xplog_test.xml";
+    public static final String EVENT_CONFIG_NAME = "xevent_log_test.xml";
     public static boolean useConfig = true;
 
     public CustomXPEventStream(final Context mContext) {
@@ -40,20 +40,6 @@ public class CustomXPEventStream extends SimpleEventStream {
             //xpanel蒙层持续时间
             register(new SwTimeTracker());
         }
-
-//        register(new SimpleXPTracker(new XPDescription[]{
-//                new SimpleXPDescription(EventConstant.EVENT_NETWORK_BACK),
-//                new SimpleXPDescription(EventConstant.EVENT_CREATE_SUBCARD)})
-//                .setILogCallbacks(new ILogCallback[]{new ILogCallback() {
-//                    @Override
-//                    public void onLog(final XPEvent xpEvent) {
-//                        String group = xpEvent.getString(AttrsConstant.GROUP);
-//                        if (TextUtils.equals(GroupConstant.GROUP_SUB_CARD, group)) {
-//                            LogcatUtil.e(TAG, "unRegisterByGroup : " + group);
-//                            unRegisterByGroup(GroupConstant.GROUP_SUB_CARD);
-//                        }
-//                    }
-//                }}));
 
         /**
          *  注册toast事件观察者

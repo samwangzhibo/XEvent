@@ -16,9 +16,9 @@ import com.wzb.xeventjs.XEventJsTool;
 public class XEventWrapper {
     public static void sendEvent(final XPEvent xpEvent) {
         // 1.na版本模式
-//        XEvent.getInstance().sendEvent(xpEvent);
+        XEvent.getInstance().sendEvent(xpEvent);
 
         // 2. js模式
-        XEventJsTool.getInstance().sendEvent(xpEvent);
+//        XEventJsTool.getInstance().sendEvent(xpEvent);
     }
 }

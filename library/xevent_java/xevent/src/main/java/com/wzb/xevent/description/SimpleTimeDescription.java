@@ -1,8 +1,8 @@
 package com.wzb.xevent.description;
 
 import android.text.TextUtils;
-import com.wzb.xevent.XPConstant;
 import com.wzb.xevent.XPEvent;
+import com.wzb.xevent.constant.XPConstant;
 import com.wzb.xevent.parser.JexlExpressionParser;
 import com.wzb.xevent.util.LogcatUtil;
 

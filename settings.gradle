@@ -1,1 +1,1 @@
-include ':app', ':library:xevent_java:xevent_simple', ':library:xevent_java:xevent'
+include ':app', ':library:xevent_java:xevent'

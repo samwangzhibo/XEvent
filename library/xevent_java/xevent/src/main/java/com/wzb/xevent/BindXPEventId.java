@@ -8,7 +8,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import static com.wzb.xevent.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
+import static com.wzb.xevent.constant.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
 
 /**
  * 用于描述{@link com.wzb.xevent.tracker.XPEventTracker}

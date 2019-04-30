@@ -66,8 +66,6 @@ XEvent...
 
 ## XEvent(Java) 使用四步走
 
----
-
 1. 初始化 (样例代码 app/MyApplication)
 
    ```java
@@ -116,13 +114,13 @@ XEvent...
      @Override
      protected void onResume() {
        super.onResume();
-       XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONRESUME));
+       XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONRESUME)); //onresume
      }
    
      @Override
      protected void onPause() {
        super.onPause();
-      XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONPAUSE));
+      XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONPAUSE)); //onpause
      }
    ```
 
@@ -137,8 +135,6 @@ XEvent...
 
 
 ## XEvent(JavaScript) 使用二步走
-
----
 
 1. 初始化Js引擎
 

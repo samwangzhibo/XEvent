@@ -1,4 +1,4 @@
-package com.wzb.xevent.stream;
+package com.wzb.xevent.xevent.stream;
 
 
 import com.wzb.xevent.XPEvent;

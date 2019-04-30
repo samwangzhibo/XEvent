@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.wzb.xevent.BindXPEventId;
-import com.wzb.xevent.XPConstant;
 
 import com.wzb.xevent.XPEvent;
+import com.wzb.xevent.constant.XPConstant;
 import com.wzb.xevent.description.XPDescription;
 import com.wzb.xevent.logcallback.ILogCallback;
 import com.wzb.xevent.logcallback.NullLogCallback;
@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.wzb.xevent.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
+import static com.wzb.xevent.constant.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
 
 /**
  * Tracker 满足在连续一段时间中多个时刻描述{@link XPDescription}的条件，然后触发打点和回调

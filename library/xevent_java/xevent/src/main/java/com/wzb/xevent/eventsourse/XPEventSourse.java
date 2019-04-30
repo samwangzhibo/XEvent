@@ -2,7 +2,7 @@ package com.wzb.xevent.eventsourse;
 
 
 import com.wzb.xevent.XPEvent;
-import com.wzb.xevent.stream.XPEventStream;
+import com.wzb.xevent.xevent.stream.XPEventStream;
 import com.wzb.xevent.util.LogcatUtil;
 
 /**

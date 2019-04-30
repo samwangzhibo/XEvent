@@ -8,12 +8,12 @@ import android.text.TextUtils;
 
 
 import com.wzb.xevent.XPEvent;
-import com.wzb.xevent.stream.IStreamLogCallback;
-import com.wzb.xevent.stream.XPEventStream;
+import com.wzb.xevent.xevent.stream.IStreamLogCallback;
+import com.wzb.xevent.xevent.stream.XPEventStream;
 import com.wzb.xevent.tracker.XPEventTracker;
 
 /**
- * 入口类 负责把所有事件分发到指定的{@link com.wzb.xevent.stream.XPEventStream}
+ * 入口类 负责把所有事件分发到指定的{@link com.wzb.xevent.xevent.stream.XPEventStream}
  * Created by samwangzhibo on 2018/12/26.
  */
 

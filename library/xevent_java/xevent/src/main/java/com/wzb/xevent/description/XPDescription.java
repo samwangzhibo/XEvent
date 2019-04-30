@@ -2,9 +2,8 @@ package com.wzb.xevent.description;
 
 import android.util.Log;
 
-import com.wzb.xevent.XPConstant;
-
 import com.wzb.xevent.XPEvent;
+import com.wzb.xevent.constant.XPConstant;
 import com.wzb.xevent.debug.IDebug;
 import com.wzb.xevent.tracker.ITrackerCallback;
 import com.wzb.xevent.tracker.SimpleXPTracker;

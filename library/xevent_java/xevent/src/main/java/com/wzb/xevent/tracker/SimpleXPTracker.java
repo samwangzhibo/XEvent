@@ -7,12 +7,12 @@ import android.text.TextUtils;
 import com.wzb.xevent.XPEvent;
 import com.wzb.xevent.description.XPDescription;
 import com.wzb.xevent.logcallback.ILogCallback;
-import com.wzb.xevent.stream.IStreamLogCallback;
+import com.wzb.xevent.xevent.stream.IStreamLogCallback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.wzb.xevent.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
+import static com.wzb.xevent.constant.XPConstant.DEFAULT_RESEND_XPEVENT_ID;
 
 /**
  * 简单版本的Tracker 支持传入xpDescriptions、打点名等基础参数

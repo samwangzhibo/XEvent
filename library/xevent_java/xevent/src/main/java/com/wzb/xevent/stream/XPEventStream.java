@@ -1,11 +1,10 @@
-package com.wzb.xevent.stream;
+package com.wzb.xevent.xevent.stream;
 
 
 import android.text.TextUtils;
 
-import com.wzb.xevent.XPConstant;
-
 import com.wzb.xevent.XPEvent;
+import com.wzb.xevent.constant.XPConstant;
 import com.wzb.xevent.debug.DebugConfig;
 import com.wzb.xevent.logcallback.ILogCallback;
 import com.wzb.xevent.manager.XEvent;
@@ -32,7 +31,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by samwangzhibo on 2018/7/18.
  */
 
-public class XPEventStream implements IStream {
+public class XPEventStream implements com.wzb.xevent.xevent.stream.IStream {
     public static final String TAG = "XPEventStream";
     public static final String TAG_PATCH = "patch";
     /**
@@ -54,7 +53,7 @@ public class XPEventStream implements IStream {
     /**
      * 外部传入的 为了给simpleTracker使用
      */
-    private IStreamLogCallback iStreamLogCallback;
+    private com.wzb.xevent.xevent.stream.IStreamLogCallback iStreamLogCallback;
     /**
      * 异常判断器
      */
@@ -234,7 +233,7 @@ public class XPEventStream implements IStream {
      * @param iStreamLogCallback 业务层传递的打点方法
      */
     @Override
-    public void setIStreamLogCallback(IStreamLogCallback iStreamLogCallback) {
+    public void setIStreamLogCallback(com.wzb.xevent.xevent.stream.IStreamLogCallback iStreamLogCallback) {
         this.iStreamLogCallback = iStreamLogCallback;
     }
 

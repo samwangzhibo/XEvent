@@ -13,6 +13,6 @@ public class SwLogCallback implements ILogCallback {
     private static final String TAG = "XPanelSwLogCallback";
     @Override
     public void onLog(XPEvent xpEvent) {
-        LogcatUtil.e(TAG, "xpanel拉起时长的回调");
+        LogcatUtil.e(TAG, "查看时长的回调");
     }
 }

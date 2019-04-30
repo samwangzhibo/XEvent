@@ -168,6 +168,11 @@ public class XEvent implements IXEvent {
         }, duration);
     }
 
+    public void registerTrakerByConfig(String config) {
+      ensureDefaultEventStream();
+      registerTrakerByConfig(defaultEventStream, config);
+    }
+
     public void registerTrakerByConfig(XPEventStream xpEventStream, String config) {
         if (xpEventStream == null || TextUtils.isEmpty(config)) {
             return;

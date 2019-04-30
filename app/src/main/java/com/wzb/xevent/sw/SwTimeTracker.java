@@ -22,8 +22,8 @@ public class SwTimeTracker extends XPEventTracker {
     @Override
     public XPDescription[] getDescription() {
         return new XPDescription[]{
-                new SimpleXPDescription(EventConstant.EVENT_PAGE_KEEP),
-                new SimpleXPDescription(EventConstant.EVENT_PAGE_RELEASE)
+                new SimpleXPDescription(EventConstant.EVENT_ONPAUSE),
+                new SimpleXPDescription(EventConstant.EVENT_ONRESUME)
         };
     }
 

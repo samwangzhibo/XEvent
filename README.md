@@ -68,27 +68,25 @@ XEvent...
 
 ---
 
-1. 初始化 (样例代码 app/MainActivity)
+1. 初始化 (样例代码 app/MyApplication)
 
    ```java
    // 1.初始化引擎
    XEvent.getInstance().init();
    
    // 2.设置事件流去分发事件
-   XEvent.getInstance().setDefaultEventStream(new CustomXPEventStream(MainActivity.this));
+   XEvent.getInstance().setDefaultEventStream(new SimpleEventStream(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)));
    
    // 3.设置处理框架抛回数据的回调
    XEvent.getInstance().setIStreamLogCallback(new IStreamLogCallback() {
      @Override
      public void onEventLog(String eventName, Map<String, Object> attrs) {
-       if (TextUtils.isEmpty(eventName)) return;
-       //回调
-       LogcatUtil.e(TAG, "log : eventName = " + eventName);
+         // 处理你的埋点数据上报
      }
    });
    ```
 
-2. 配置打点规则DSL  (样例代码 app/assets)
+2. 配置打点规则DSL  (样例代码 app/assets/xevent_log_test.xml)
 
    >  这段规则是统计 `onRsume状态` 到` onPause状态` 的时间，并上报为keep_time打点
 
@@ -105,10 +103,11 @@ XEvent...
    </trackers>
    ```
 
-3. 注册规则 (样例代码  app/CustomXPEventStream)
+3. 注册规则 (样例代码  app/MyApplication)
 
    ```java
-   registerTrakerByConfig(Utils.getStringFromAsset(EVENT_CONFIG_NAME, mContext));
+   //如果是采用第一步的方式  默认已经初始化了  可跳过
+   simpleEventStream.registerTrakerByConfig(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)); 
    ```
 
 4. 发送事件  (样例代码 app/MainActivity)
@@ -117,14 +116,13 @@ XEvent...
      @Override
      protected void onResume() {
        super.onResume();
-       XEventWrapper.sendEvent(new XPEvent(EventConstant.EVENT_ONRESUME));
-   
+       XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONRESUME));
      }
    
      @Override
      protected void onPause() {
        super.onPause();
-       XEventWrapper.sendEvent(new XPEvent(EventConstant.EVENT_ONPAUSE));
+      XEvent.getInstance().sendEvent(new XPEvent(EventConstant.EVENT_ONPAUSE));
      }
    ```
 

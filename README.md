@@ -11,6 +11,8 @@ English doc click [here](./README-EN.md)!
 
 ![image-20190430010651968](https://ws4.sinaimg.cn/large/006tNc79ly1g2k1saxcatj31o20kstdk.jpg)
 
+### 优点
+
 XEvent...
 
 1. **节约人力**，只需要写一套DSL(js、xml)配置，搞定多平台打点，可读性强
@@ -21,7 +23,34 @@ XEvent...
 6. **好调试，** 自动化测试，记录用户事件，回放事件，检验打点
 7. 规则**动态下发**，不依赖发版
 
+### 设计文档
 
+> 主要涵盖3方面：
+>
+> 1. XEvent的技术选型
+>
+> 2. 底层建模，Event、Tracker、Stream、Description等概念
+> 3. DSL的选型
+
+[wiki在这](https://github.com/samwangzhibo/XEvent/wiki/XEvent-Design-Document)
+
+## 建议谁使用？
+
+1. iOS的打点和Android打点总是**对不齐**
+
+   >  XEvent 会通过配置化规则保证多个使用端的打点逻辑统一
+
+2. 埋点代码复杂，涉及多个时刻(比如一张卡片50%以上区域曝光1s)， 逻辑代码中**耦合**埋点代码，发新版本的时候**埋点数据总是波动**
+
+3. 打点业务总是多变的，需要热发布，传统的发布方案需要**跟版上线**，一个版本对于埋点统计和业务发展是致命的。
+
+   > XEvent 实时下发配置规则(js、XML)
+
+4. 打点代码有时很复杂，会影响主线程性能(比如滑动的时候去计算卡片的曝光，需要监听每一次滑动并且遍历计算)，每个地方都做线程处理又比较麻烦
+
+   > XEvent 发送的事件都在子线程处理，处理完的结果可以定义是交给主线程还是在子线程处理
+
+5. 可能你还想要一些功能，比如自动化测试埋点稳定性、事件回放、用户行为分析，那赶紧使用吧!!!
 
 ### 概要
 
@@ -35,7 +64,7 @@ XEvent...
 
    > JavaScript实现的事件流配置化打点框架，特点是跨端，前端、Android|、iOS均可使用，缺点`JS Bridge` 耗时 
 
-### XEvent(Java) 使用四步走
+## XEvent(Java) 使用四步走
 
 ---
 
@@ -109,7 +138,7 @@ XEvent...
 
 
 
-### XEvent(JavaScript) 使用二步走
+## XEvent(JavaScript) 使用二步走
 
 ---
 
@@ -150,7 +179,7 @@ XEvent...
 
 
 
-### XEvent 还能干吗？
+## XEvent 还能干吗？
 
 > XEvent(Java) 只是过渡版本，推荐使用XEvent(js) 版本，因为足够跨端
 

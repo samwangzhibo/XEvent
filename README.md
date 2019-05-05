@@ -172,6 +172,25 @@ XEvent...
    ```
 
 
+## 添加XEvent到你的工程
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Download](https://api.bintray.com/packages/samwangzhibo3/xevent/xevent/images/download.svg) ](https://bintray.com/samwangzhibo3/xevent/xevent/_latestVersion)
+
+Via Gradle:
+```gradle
+compile 'com.wzb.xevent:xevent:1.0'
+```
+Via Maven:
+```xml
+<dependency>
+	<groupId>com.wzb.xevent</groupId>
+	<artifactId>xevent</artifactId>
+	<version>1.0</version>
+	<type>pom</type>
+</dependency>
+```
+Or download  [the latest JAR](https://bintray.com/beta/#/samwangzhibo3/xevent/xevent?tab=overview) from JCenter.
+
 
 ## XEvent 还能干吗？
 

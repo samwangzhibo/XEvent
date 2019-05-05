@@ -126,7 +126,7 @@ XEvent...
 
 
 
-预览
+ 预览效果
 
 > 可以看到在 onPause时候上报了此次用户停留时长
 
@@ -176,11 +176,23 @@ XEvent...
 [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/samwangzhibo3/xevent/xevent/images/download.svg) ](https://bintray.com/samwangzhibo3/xevent/xevent/_latestVersion)
 
-Via Gradle:
+### Via Gradle:
+1. config your project build.gradle like XEvent/build.gradle (maybe need)
+```gradle 
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://dl.bintray.com/samwangzhibo3/xevent/' }
+    }
+}
+```
+
+2. config your moudle build.gradle like XEvent/app/build.gradle
 ```gradle
 compile 'com.wzb.xevent:xevent:1.0'
 ```
-Via Maven:
+### Via Maven:
 ```xml
 <dependency>
 	<groupId>com.wzb.xevent</groupId>

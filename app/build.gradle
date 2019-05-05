@@ -8,7 +8,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -16,11 +15,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:recyclerview-v7:26.0.1'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation project(path: ':library:xevent_java:xevent')
+//    implementation project(path: ':library:xevent_java:xevent')
+    implementation 'com.wzb.xevent:xevent:1.0'
 }

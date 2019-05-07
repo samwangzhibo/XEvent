@@ -20,8 +20,8 @@ XEvent...
 3.  strong Data **reliability**, business logic and data reporting logic is not associated, modify business will not affect data reporting
 4. good **fluency**， data reporting logic is placed in the child thread message queue, does not affect the main thread rendering process
 5. **Development speed** fast,  faster configuration, faster publish, which one need 1 day to  develop before and now just need 5 minites (example)
-6. **easy debugging, ** automated testing, recording user events, replay user events, inspection event report
-7. Rules **dynamically publish **, do not rely on the release version publish
+6. **easy debugging**, automated testing, recording user events, replay user events, inspection event report
+7. Rules **dynamically publish**, do not rely on the release version publish
 
 ### Design document
 

@@ -46,45 +46,45 @@ XEvent...
 
    > XEvent Deliver configuration (js、XML) rules in real time
 
-4. 上报数据代码有时很复杂，会影响主线程性能(比如滑动的时候去计算卡片的曝光，需要监听每一次滑动并且遍历计算)，每个地方都做线程处理又比较麻烦
+4. The code for reporting data is sometimes complicated, **affecting the performance of the main thread** (such as calculating the exposure of the card when scroll, needing to listen to each scroll and traversing the calculation), and it is more troublesome to do thread processing in every place.
 
-   > XEvent 发送的事件都在子线程处理，处理完的结果可以定义是交给主线程还是在子线程处理
+   > The events Event send are processed in the child thread, and the processed result can be defined whether it is handed to the main thread or processed in the child thread.
 
-5. 可能你还想要一些功能，比如自动化测试埋点稳定性、事件回放、用户行为分析，那赶紧使用吧!!!
+5. Maybe you still want some features, such as automated testing, data reporting stability, event playback, user behavior analysis, then let's enjoin it!!!
 
 ### Summary
 
-​	XEvent有2套实现，对应于项目library目录下面的[xevent](library/xevent)、[xeventjs](library/xeventjs), 所以下面提供2种接入方式。
+​	XEvent has 2 sets of implementations, corresponding to [xevent](library/xevent), [xeventjs](library/xeventjs) under the project library directory, so 2 access methods are provided below.
 
 1. xevent
 
-   > 原生Java开发的事件流配置化打点框架，特点是性能优，缺点是没有对应的iOS实现
+   > The data reporting configuration framework based on event flow developed by native Java is characterized by excellent performance. The disadvantage is that there is no iOS implementation.
 
 2. xeventjs
 
-   > JavaScript实现的事件流配置化打点框架，特点是跨端，前端、Android|、iOS均可使用，缺点`JS Bridge` 耗时 
+   >  The configuration data reporting framework based on event flow implemented by JavaScript, characterized by cross-platform (h5, Android, iOS can use it),  the disadvantage `JS Bridge` time-consuming
 
 ## XEvent(Java)  Usage in 4 steps
 
-1. 初始化 (样例代码 app/MyApplication)
+1. init engine (sample cpde `app/MyApplication`)
 
    ```java
-   // 1.初始化引擎
+   // 1. init engine
    XEvent.getInstance().init();
    
-   // 2.设置事件流去分发事件
+   // 2. set stream to dispatch event
    XEvent.getInstance().setDefaultEventStream(new SimpleEventStream(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)));
    
-   // 3.设置处理框架抛回数据的回调
+   // 3. set your handle callback
    XEvent.getInstance().setIStreamLogCallback(new IStreamLogCallback() {
      @Override
      public void onEventLog(String eventName, Map<String, Object> attrs) {
-         // 处理你的埋点数据上报
+         // handler you data to report
      }
    });
    ```
 
-2. 配置打点规则DSL  (样例代码 app/assets/xevent_log_test.xml)
+2. config data report rule DSL  (sample code  `app/assets/xevent_log_test.xml`)
 
    >  这段规则是统计 `onRsume状态` 到` onPause状态` 的时间，并上报为keep_time打点
 
@@ -101,14 +101,14 @@ XEvent...
    </trackers>
    ```
 
-3. 注册规则 (样例代码  app/MyApplication)
+3. register rule (sample code  `app/MyApplication`)
 
    ```java
    //如果是采用第一步的方式  默认已经初始化了  可跳过
    simpleEventStream.registerTrakerByConfig(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)); 
    ```
 
-4. 发送事件  (样例代码 app/MainActivity)
+4. send event  (sample code  `app/MainActivity`)
 
    ```java
      @Override
@@ -126,7 +126,7 @@ XEvent...
 
 
 
- 预览效果
+Preview effect
 
 > 可以看到在 onPause时候上报了此次用户停留时长
 
@@ -136,7 +136,7 @@ XEvent...
 
 ## XEvent(JavaScript) Usage in 2 steps
 
-1. 初始化Js引擎
+1. init js engine
 
    ```java
    XEventJsTool.init(MainActivity.this);
@@ -164,7 +164,7 @@ XEvent...
    >    webView.evaluateJavascript("init(0)", null);
    >    ```
 
-2. 发送框架初始化事件
+2. send framework init event
 
    ```java
    // 发送初始化事件，告知js解析tracker并生成

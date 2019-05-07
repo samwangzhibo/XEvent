@@ -21,6 +21,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+//        maven { url 'https://dl.bintray.com/samwangzhibo3/xevent/' } //等上传jcenter之后就不用依赖了
     }
 }
 allprojects {

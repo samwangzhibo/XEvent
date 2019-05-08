@@ -86,17 +86,17 @@ XEvent...
 
 2. config data report rule DSL  (sample code  `app/assets/xevent_log_test.xml`)
 
-   >  这段规则是统计 `onRsume状态` 到` onPause状态` 的时间，并上报为keep_time打点
+   >  this configuration is to statistics time from `onRsume status`  to ` onPause status` ，and reporting the `keep_time` event
 
    ```java
    <?xml version="1.0" encoding="utf-8"?>
    <trackers>
-       <!--统计页面停留时长-->
+       <!--统计页面停留时长 Statistics page duration-->
        <tracker log_name="keep_time" resend_event="toast">
-           <!--进入-->
+           <!--进入 enter-->
            <description alias="A" id="onresume"/>
-           <!--退出-->
-           <description alias="B" id="onpause" put_value="{'toast_str':'页面停留时长， 耗时:' + (event_time - A.event_time)/1000 + '秒'}"/>
+           <!--退出 exit-->
+           <description alias="B" id="onpause" put_value="{'toast_str':'coasting time of page staying :' + (event_time - A.event_time)/1000 + ' second'}"/>
        </tracker>
    </trackers>
    ```
@@ -105,6 +105,7 @@ XEvent...
 
    ```java
    //如果是采用第一步的方式  默认已经初始化了  可跳过
+   //if you use 1 step implemention, it has used, so jump this step
    simpleEventStream.registerTrakerByConfig(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)); 
    ```
 
@@ -128,7 +129,7 @@ XEvent...
 
 Preview effect
 
-> 可以看到在 onPause时候上报了此次用户停留时长
+> we can see the repoting data when activity is onPause
 
 <img src="./shoot/xevent打点效果.gif" width="50%" height="50%" />
 
@@ -142,23 +143,23 @@ Preview effect
    XEventJsTool.init(MainActivity.this);
    ```
 
-   `XEventJsTool` 是实现的简单版本Js运行时，它依赖于WebView的JSCore环境
+   `XEventJsTool` Is the simple version of Js runtime, it depends on the JSCore environment of WebView
 
-   主要涉及以下操作：
+   Mainly related to the following operations：
 
-   > 1. JSCore加载运行时js代码文件
+   > 1. JSCore loads runtime js code files
    >
    >    ```java
    >    webView.evaluateJavascript(Utils.getStringFromAsset("libxevent.js", mContext), null);
    >    ```
    >
-   > 2. js运行时注入Java Bridge对象(用于回调Java方法使用)
+   > 2. Js runtime injects Java Bridge object (used to callback Java methods)
    >
    >    ```java
    >    webView.addJavascriptInterface(new JsTool(null, mContext), "xpEventManager");
    >    ```
    >
-   > 3. 初始化系统的类型，js代码有部分iOS、Android差异化
+   > 3. Initialize the type of system, js code has some iOS, Android differentiation
    >
    >    ```java
    >    webView.evaluateJavascript("init(0)", null);
@@ -167,7 +168,8 @@ Preview effect
 2. send framework init event
 
    ```java
-   // 发送初始化事件，告知js解析tracker并生成
+   // 发送框架初始化事件，告知js解析tracker并生成
+   // send init framework init event, and tell js to create tracker
    XEventWrapper.sendEvent(new XPEvent(EventConstant.XP_EVENT_XEVENT_FRAMEWORK));
    ```
 
@@ -206,18 +208,18 @@ Or download  [the latest JAR](https://bintray.com/beta/#/samwangzhibo3/xevent/xe
 
 ## XEvent can do more？
 
-> XEvent(Java) 只是过渡版本，推荐使用XEvent(js) 版本，因为足够跨端
+> XEvent(Java) is just a transitional version, it is recommended to use the XEvent(js) version because it is cross-platform
 
-1. XEvent代码（js）和XEvent配置（js）都支持规则动态下发，不依赖发版
+1. Both XEvent code (js) and XEvent configuration (js) support dynamic distribution of rules, independent of the release version
 
-2. 事件流拦截用户事件，用于回放、自动化测试
+2. The form of the event stream is convenient for intercepting user events for playback and automated testing.
 
-3. 用户行为模型fit客户端化
+3. You can fit the model based on user behavior on the client.
 
    - **why？**
 
-   - - **省钱省机器**，减缓服务端对于用户行为实时建模的算力压力
-     - **省时间**，服务器不需要等到晚上跑前一天的全量原始数据fit。
+   - - **Save money and save machines**, slow down the server's computing pressure on real-time modeling of user behavior
+     - **Save time**, the server does not need to wait until the next day to run the full amount of user data for the model fit.
 
    - **principle**
 

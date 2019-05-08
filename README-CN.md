@@ -142,7 +142,7 @@ XEvent...
    XEventJsTool.init(MainActivity.this);
    ```
 
-   `XEventJsTool` 是实现的简单版本Js运行时，它依赖于WebView的JSCore环境
+   `XEventJsTool` 是简单版本Js运行时，它依赖于WebView的JSCore环境
 
    主要涉及以下操作：
 
@@ -210,14 +210,14 @@ Or download  [the latest JAR](https://bintray.com/beta/#/samwangzhibo3/xevent/xe
 
 1. XEvent代码（js）和XEvent配置（js）都支持规则动态下发，不依赖发版
 
-2. 事件流拦截用户事件，用于回放、自动化测试
+2. 事件流的实现，方便拦截用户事件，然后进行回放、自动化测试
 
-3. 用户行为模型fit客户端化
+3. 你能在客户端通过用户行为训练模型
 
    - **为什么？**
 
    - - **省钱省机器**，减缓服务端对于用户行为实时建模的算力压力
-     - **省时间**，服务器不需要等到晚上跑前一天的全量原始数据fit。
+     - **省时间**，服务器不需要等到晚上跑前一天的全量原始数据fit模型。
 
    - **原理**
 

@@ -66,7 +66,7 @@ XEvent...
 
 ## XEvent(Java)  Usage in 4 steps
 
-1. init engine (sample cpde `app/MyApplication`)
+1. init engine (sample code in `app/MyApplication`)
 
    ```java
    // 1. init engine
@@ -84,7 +84,7 @@ XEvent...
    });
    ```
 
-2. config data report rule DSL  (sample code  `app/assets/xevent_log_test.xml`)
+2. config data report rule DSL  (sample code in `app/assets/xevent_log_test.xml`)
 
    >  this configuration is to statistics time from `onRsume status`  to ` onPause status` ，and reporting the `keep_time` event
 
@@ -101,7 +101,7 @@ XEvent...
    </trackers>
    ```
 
-3. register rule (sample code  `app/MyApplication`)
+3. register rule (sample code in  `app/MyApplication`)
 
    ```java
    //如果是采用第一步的方式  默认已经初始化了  可跳过
@@ -109,7 +109,7 @@ XEvent...
    simpleEventStream.registerTrakerByConfig(Utils.getStringFromAsset(EVENT_CONFIG_NAME, this)); 
    ```
 
-4. send event  (sample code  `app/MainActivity`)
+4. send event  (sample code in `app/MainActivity`)
 
    ```java
      @Override
@@ -127,7 +127,7 @@ XEvent...
 
 
 
-Preview effect
+**Preview effect**
 
 > we can see the repoting data when activity is onPause
 
